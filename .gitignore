@@ -1,0 +1,9 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+TestResults/
+.idea/
+*.txt
+!src/Generator/words.txt

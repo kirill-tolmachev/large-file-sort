@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Common/Common.csproj" />
+    <Project Path="src/Generator/Generator.csproj" />
+    <Project Path="src/Sorter/Sorter.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Tests/Tests.csproj" />
+  </Folder>
+</Solution>
