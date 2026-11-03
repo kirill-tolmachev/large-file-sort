@@ -2,9 +2,15 @@
 
 Sorts a text file of lines like `415. Apple` by the string part, then by the number. Files can be up to ~100 GB, so this is an external merge sort. Two tools: a generator for test files and the sorter.
 
-Needs the .NET 10 SDK. Warnings are errors and the analyzers run at `latest-recommended`.
+## TL;DR
+
+This program uses a parallel merge sort and several optimization techniques to achieve 56 s and 1.46 GB peak memory for a 10 GB file on my local machine. The main ones: sorting raw bytes without decoding strings, an 8-byte key prefix packed into a `ulong` so most comparisons are a single integer compare, sorting a compact line index instead of moving the lines, sampled splitters that let the runs be merged partition by partition on all cores, and a strictly sequential output write.
+
+I used Claude to help me brainstorm and architect the algorithm, to pick the techniques and to write routine code. I tried not to overcomplicate the design. More performance can be squeezed out, but I prefer not to over-optimize unless needed.
 
 ## Usage
+
+Needs the .NET 10 SDK. Warnings are errors and the analyzers run at `latest-recommended`.
 
 ```bash
 dotnet build -c Release
